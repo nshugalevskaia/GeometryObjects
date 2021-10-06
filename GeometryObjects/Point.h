@@ -1,7 +1,6 @@
-
 #pragma once
 #include <iostream>
-//
+
 class Point
 {
 
@@ -15,6 +14,8 @@ public:
 	double distance_to(const Point& other_point) const;
 	bool operator==(const Point& other_point) const;
 	bool operator!=(const Point& other_point) const;
+	
+
 	const double x = 0;
 	const double y = 0;
 

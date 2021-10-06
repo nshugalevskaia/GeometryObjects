@@ -20,6 +20,7 @@ bool Polygon::contains_point_inside(const Point& point)
 	for (auto i = edges.begin(); i != edges.end(); ++i)
 	{
 		Vector curr_edge = *i;
+		if (curr_edge.contains_point(point)) return false;
 		if (curr_edge.intersect(router))
 		{
 			if (curr_edge.m_start != curr_edge.intersection_point(router) //учитываем лучи, проходящие через концы граней, но не начало

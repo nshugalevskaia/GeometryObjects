@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <set>
+#include <map>
 #include <unordered_set>
 #include "Solutions.h"
 
@@ -73,11 +74,12 @@ size_t count_of_points_inside_polygon(std::string fine_ne)
 
 }
 
-size_t count_of_points_near_circle(size_t N)
+size_t points_near_circle(size_t N, std::multimap<double,Point>& PointsList, Circle circle, double distance_to_circle)
 {
+	PointsList.clear();
 	size_t ans = 0;
-	Point center(0,0);
-	double R = 80, dist = 10;
+	Point center = circle.m_center;
+	double R = circle.m_radius, dist = distance_to_circle;
 	Circle inner_circle(center, R - dist);
 	Circle outer_circle(center, R + dist);
 	double max_x = 100, min_x = -100, max_y = 100, min_y = -100;
@@ -88,10 +90,19 @@ size_t count_of_points_near_circle(size_t N)
 		set_points.push_back(Point(((double)rand() + 1) / ((double)RAND_MAX + 2) * (max_x - min_x) + min_x, ((double)rand() + 1) / ((double)RAND_MAX + 2) * (max_y - min_y) + min_y));
 	}
 
-	for (auto i = set_points.begin(); i !=set_points.end(); ++i)
+
+	std::ofstream list_point;
+	list_point.open("output_points.txt");
+	for (auto i = set_points.begin(); i != set_points.end(); ++i)
 	{
-		if (!inner_circle.contains_inside(*i) && outer_circle.contains_inside(*i)) ++ans;
+		if (!inner_circle.contains_inside(*i) && outer_circle.contains_inside(*i))
+		{
+			PointsList.insert({ i->get_polar_coords().second, *i });
+			list_point << i->x << " " << i->y << std::endl;
+			++ans;
+		}
 	}
+	list_point.close();
 	set_points.clear();
 	return ans;
 

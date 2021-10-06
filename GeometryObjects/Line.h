@@ -18,10 +18,9 @@ public:
 
 	bool intersect(const Line& other_line) const;
 	bool collinear(const Line& other_line) const;
-	bool operator ==(const Line& other_line) const;
 
 	Point extending_intersection_point(const Line& other_line) const; //пересечение продолжения линий (прямых на которых лежит луч/сегмент)
-	Point intersection_point(const Line& other_line) const; //пересечение линий (сегмент/луч)
+	Point intersection_point(const Line& other_line) const; //пересечение ограниченных линий (сегмент/луч)
 
 	virtual bool contains_point(const Point& point) const = 0;
 	virtual std::tuple<double, double, double> get_line_coeff() const = 0;

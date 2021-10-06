@@ -156,6 +156,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Circle.h" />
+    <ClInclude Include="Constants.h" />
     <ClInclude Include="Direct.h" />
     <ClInclude Include="DirectedLine.h" />
     <ClInclude Include="HalfLine.h" />

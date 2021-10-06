@@ -11,6 +11,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GeometryObjects", "GeometryObjects\GeometryObjects.vcxproj", "{9754AA62-6DCB-4854-BB56-D5FEF5588E2C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GeometryObjectsTest", "GeometryObjectsTest\GeometryObjectsTest.vcxproj", "{5E73DD8B-8736-40CE-A77C-64F4412B8865}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9754AA62-6DCB-4854-BB56-D5FEF5588E2C} = {9754AA62-6DCB-4854-BB56-D5FEF5588E2C}
+		{2E3F5BF8-9C4E-47B3-8DCA-D6B43A32262B} = {2E3F5BF8-9C4E-47B3-8DCA-D6B43A32262B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

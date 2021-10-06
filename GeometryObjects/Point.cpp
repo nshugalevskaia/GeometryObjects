@@ -1,4 +1,5 @@
 #include "Point.h"
+#include "Constants.h"
 
 double Point::distance_between(Point A, Point B)
 {
@@ -18,7 +19,7 @@ std::pair<double, double> Point::get_cartesian_coords() const
 std::pair<double, double> Point::get_polar_coords() const
 {
 	double ro = x * x + y * y;
-	double fi = atan(y / x);
+	double fi = atan2(y,x);
 	return { ro, fi };
 }
 double Point::distance_to(const Point& other_point) const
@@ -28,7 +29,7 @@ double Point::distance_to(const Point& other_point) const
 
 bool Point::operator==(const Point& other_point) const
 {
-	if (x == other_point.x && y == other_point.y) return true;
+	if (fabs(x - other_point.x)<precision && fabs(y - other_point.y) < precision) return true;
 	else return false;
 }
 

@@ -9,7 +9,9 @@ public:
 	Direct() = delete;
 	Direct(const Direct&) = default;
 	Direct(double a, double b, double c);
-	Direct(Point A, Point B);
+	Direct(const Point& A, const Point& B);
+
+	bool operator==(const Direct& other) const;
 
 	std::tuple<double, double, double> get_line_coeff() const override;
 	bool contains_point(const Point& point) const override;

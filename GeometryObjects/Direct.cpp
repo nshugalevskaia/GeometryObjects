@@ -1,11 +1,17 @@
 #include "Point.h"
 #include "Direct.h"
+#include "Constants.h"
 #include<tuple>
-
 
 Direct::Direct(double a, double b, double c):m_a(a),m_b(b),m_c(c){}
 
-Direct::Direct(Point A, Point B) 
+bool Direct::operator==(const Direct& other_line) const {
+	return (fabs(m_a - other_line.m_a) < precision
+		    && fabs(m_b - other_line.m_b) < precision
+			&& fabs(m_c - other_line.m_c) < precision);
+}
+
+Direct::Direct(const Point& A, const Point& B) 
 {
 	auto [x1,y1] = A.get_cartesian_coords();
 	auto [x2, y2] = B.get_cartesian_coords();
@@ -17,7 +23,7 @@ Direct::Direct(Point A, Point B)
 
 bool Direct::contains_point(const Point& point) const
 {
-		if (m_a * point.x + m_b * point.y + m_c == 0) return true;
+		if (fabs(m_a * point.x + m_b * point.y + m_c) < precision) return true;
 	else return false;
 }
 
