@@ -44,7 +44,7 @@ Point Line::extending_intersection_point(const Line& other_line) const
 	auto [a1, b1, c1] = this->get_line_coeff();
 	auto [a2, b2, c2] = other_line.get_line_coeff();
 
-	double x, y;
+	double x=0, y=0;
 	if (b1 != 0 && b2 != 0 && a1 != 0 && a2 != 0)
 	{
 		x = (b2 * c1 - b1 * c2) / (a2 * b1 - a1 * b2);

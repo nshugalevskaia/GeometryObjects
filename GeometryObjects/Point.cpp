@@ -11,6 +11,11 @@ double Point::distance_between(Point A, Point B)
 Point::Point(const double x_in, const double y_in): x(x_in),y(y_in)
 {}
 
+bool Point::upper(const Point& other_point) const
+{
+	return (y - other_point.y > precision);
+}
+
 std::pair<double, double> Point::get_cartesian_coords() const
 {
 	return { x,y };
